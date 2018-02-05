@@ -2,6 +2,18 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+<title> 3D map API</title>
+<style>
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
 <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
 <script src="https://js.arcgis.com/4.6/"></script>
 <script>
@@ -10,13 +22,20 @@ require([
   "esri/views/SceneView",
   "dojo/domReady!"
 ], function(Map, SceneView) {
-    var map-new Map({
+    var map=new Map({
       basemap: "hybrid",
       ground:"world-elevation"
     });
+    var view=new SceneView({
+      container:"viewDiv", // the DOM node that contains view
+      map: map,
+      scale: 50000000,
+      center:[-119.17,51.78]
+    });
 });
 </script>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Intro to SceneView - Create a 3D map</title>
 </head>
+  <body >
+    <div id="viewDiv"></div>
+  </body>
 </html>
